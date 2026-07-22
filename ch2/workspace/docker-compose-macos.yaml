@@ -13,7 +13,7 @@ services:
     # network_mode: host
 
     volumes:
-      - ~/Projects_robotics/workspace:/home/rosuser/ros2_ws
+      - ~/Projects_robotics/ros2-minimal-examples/ch2/workspace:/home/rosuser/ros2_ws
 
       # XQuartz socket forwarding (macOS GUI)
       - /tmp/.X11-unix:/tmp/.X11-unix:rw

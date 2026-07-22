@@ -13,7 +13,7 @@ services:
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/Project_robotics/workspace:/home/rosuser/ros2_ws
+      - ~/Project_robotics/ros2-minimal-examples/ch2/workspace:/home/rosuser/ros2_ws
 
     environment:
       - DISPLAY=${DISPLAY}
