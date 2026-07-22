@@ -1,0 +1,23 @@
+{
+    "name": "ROS2 Humble Container",
+
+    "dockerComposeFile": [
+        "../docker-compose-macos.yaml"
+    ],
+
+    "service": "ros2",
+
+    "workspaceFolder": "/home/rosuser/ros2_ws",
+
+    "remoteUser": "rosuser",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-iot.vscode-ros",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

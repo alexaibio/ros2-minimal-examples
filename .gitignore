@@ -1,0 +1,10 @@
+build/
+install/
+log/
+
+.vscode/
+.DS_Store
+.idea/
+
+__pycache__/
+*.pyc

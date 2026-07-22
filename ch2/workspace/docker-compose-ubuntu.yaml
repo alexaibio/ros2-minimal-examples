@@ -1,0 +1,28 @@
+services:
+  ros2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: ros2docker
+    container_name: ros2container
+
+    network_mode: host
+    hostname: ROS2Alex
+    tty: true
+
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/Project_robotics/workspace:/home/rosuser/ros2_ws
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/snd:/dev/snd
+
+    working_dir: /home/rosuser/ros2_ws
+
+    command: ["/bin/bash"]
