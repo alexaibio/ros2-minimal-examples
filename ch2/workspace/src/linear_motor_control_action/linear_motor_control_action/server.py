@@ -1,8 +1,10 @@
-import rclpy
 import math 
-from rclpy.node import Node
 
+import rclpy
+from rclpy.node import Node
 from rclpy.action import ActionServer
+from rclpy.action.server import ServerGoalHandle
+
 from action_pkg.action import LinearControl
 
 
@@ -12,14 +14,14 @@ class LinearControlServer(Node):
     """
 
     def __init__(self):
-        super().__init__('linear_control_action_server')
+        super().__init__('linear_control_action_server')    # visible with `ros2 node list`
         self._action_server = ActionServer(
             self,
-            action_type=LinearControl,      # link to interface from action_pkg: goal/result/feedback
-            action_name='linear_control',   # visible with  'ros2 action list'
+            action_type=LinearControl,          # link to interface from action_pkg: goal/result/feedback
+            action_name='linear_control',       # visible with  'ros2 action list'
             execute_callback=self.execute_callback)
         
-    def execute_callback(self, goal_handle): 
+    def execute_callback(self, goal_handle: ServerGoalHandle) -> LinearControl.Result: 
         """
         Callback, executed when an action request comes (goal is sent by a client)
         goal_handle contains: 
@@ -30,9 +32,9 @@ class LinearControlServer(Node):
         :param goal_handle: a data structure came from LinearControl.action request interface, contains initial_position etc 
         """  
         # read the Goal   
-        curr_pos = goal_handle.request.initial_position
-        goal_pos = goal_handle.request.goal_position
-        velocity = goal_handle.request.linear_velocity
+        curr_pos: float = goal_handle.request.initial_position
+        goal_pos: float = goal_handle.request.goal_position
+        velocity: float = goal_handle.request.linear_velocity
         self.get_logger().info(
             f"Received goal: start={curr_pos:.3f}, "
             f"goal={goal_pos:.3f}, velocity={velocity:.3f}"
@@ -65,16 +67,19 @@ class LinearControlServer(Node):
             
         self.get_logger().info("Goal reached successfully.")
         goal_handle.succeed()
+
         result = LinearControl.Result()
         result.motion_done = True
+
+        # result is sent back to the client and not used here in code
         return result
         
-
 def main(args=None):
     rclpy.init(args=args)
     linear_control_action_server = LinearControlServer()
     rclpy.spin(linear_control_action_server)
-    
+
+
 if __name__ == '__main__':
     main()
     
