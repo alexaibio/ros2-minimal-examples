@@ -1,14 +1,16 @@
+"""
+Pub/sub communication example for extended message
+"""
 import matplotlib
 print("Backend =", matplotlib.get_backend())
 import matplotlib.pyplot as plt
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float64
+from msgs_pkg.msg import SineWave
 
 
 class SinusoidalSubscriber(Node):
-
     def __init__(self):
         super().__init__("sinusoidal_subscriber")   # register a node /sinusoidal_subscriber
         self.data = []
@@ -16,10 +18,10 @@ class SinusoidalSubscriber(Node):
 
         # Event 1
         self.subscription = self.create_subscription(
-            Float64,
-            "sinusoidal_signal",        # topic
+            SineWave,
+            "sinusoidal_signal_custom",         # topic
             self.callback,
-            10                          # queue size
+            10                                  # queue size
         )
 
         # Event 2
@@ -28,13 +30,14 @@ class SinusoidalSubscriber(Node):
             self.check_finished     # call after expiration
         )
 
-    def callback(self, msg):
+        self.get_logger().info("Subscriber has been initialized...")
 
+    def callback(self, msg):
         # first time
         if self.start_time is None:
             self.start_time = self.get_clock().now()
 
-        self.data.append(msg.data)
+        self.data.append(msg.signal.data)
 
     def check_finished(self):
         # ignore timer if collection is not started yet
@@ -57,7 +60,13 @@ class SinusoidalSubscriber(Node):
 def main():
     rclpy.init()
     node = SinusoidalSubscriber()
-    rclpy.spin(node)
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == "__main__":

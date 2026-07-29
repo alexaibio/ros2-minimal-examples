@@ -24,7 +24,10 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'sine_wave_pub = pubsub_py.sine_wave_pub:main'
+            'sine_wave_pub = pubsub_py.sine_wave_pub:main',
+            'sine_wave_sub = pubsub_py.sine_wave_sub_best_ROS:main',
+            'sine_wave_pub_custom = pubsub_py.sine_wave_pub_custom:main',
+        	'sine_wave_sub_custom = pubsub_py.sine_wave_sub_custom:main'
         ],
     },
 )

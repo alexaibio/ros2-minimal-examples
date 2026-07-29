@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Run: ros2 run pubsub_py sine_wave_pub
+# Run: `ros2 run pubsub_py sine_wave_pub` , check setup.py 
 
 import rclpy
 from rclpy.node import Node

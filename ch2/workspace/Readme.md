@@ -1,7 +1,8 @@
 # Initial set of basic ROS2 examples
 
 ## Example 1: Pub/Sub
-- pubsub_py: a demo node  how to communicate via messages in publish / subscribe model
+- pubsub_py: a demo node  how to communicate via messages in publish / subscribe communication model
+- msgs_pkg: a custom composite message for pub/sub example
 
 ## Example 2: Client/server
 - srv_pkg: a package which defines interfaces for more complex data types for client-server communication
