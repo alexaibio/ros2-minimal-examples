@@ -13,7 +13,7 @@ services:
     # network_mode: host
 
     volumes:
-      - ~/Projects_robotics/ros2-minimal-examples/ch2/workspace:/home/rosuser/ros2_ws
+      - ~/Projects_robotics/ros2-minimal-examples/ch3/workspace:/home/rosuser/ros2_ws
       # XQuartz aithority
       - ~/.Xauthority:/home/rosuser/.Xauthority:rw
 
