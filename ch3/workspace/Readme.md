@@ -38,3 +38,6 @@ For example (create a new turtle):
 This is a node that publishes a velocity command to move the turtle with the following parameters
 - two parameters for velocity scaling
 - two for velocity thershold 
+
+
+## Launch Files
