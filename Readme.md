@@ -30,3 +30,13 @@ Alternatively, you can open the workspace in VS Code using `Dev Containers: Reop
 - Pub/Sub communication, server and client nodes
 - Service communication, server and client nodes
 - Action communication, server and client nodes
+
+
+## Chapter 2:
+- ROS2 CLI
+- Node parameters
+- launch files
+- Quality of Service (QoS) for Pub/Sub communication
+
+
+
