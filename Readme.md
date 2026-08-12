@@ -26,17 +26,19 @@ Now you can use an external editor to edit files in workspace directly. The work
 Alternatively, you can open the workspace in VS Code using `Dev Containers: Reopen in Container`
 
 
-## Chapter 1: basic examples
+## Chapter 2: basic examples
 - Pub/Sub communication, server and client nodes
 - Service communication, server and client nodes
 - Action communication, server and client nodes
 
 
-## Chapter 2:
+## Chapter 3: CLI
 - ROS2 CLI
 - Node parameters
 - launch files
 - Quality of Service (QoS) for Pub/Sub communication
 
+
+## Chaper 4: Robot modelling
 
 
