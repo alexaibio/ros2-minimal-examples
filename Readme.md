@@ -40,5 +40,8 @@ Alternatively, you can open the workspace in VS Code using `Dev Containers: Reop
 
 
 ## Chaper 4: Robot modelling
+- xacro/urdf robot description
+- TransForm system (TF)
+- publishing robot states
 
 
