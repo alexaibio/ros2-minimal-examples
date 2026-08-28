@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     sudo \
     ros-dev-tools \
     ros-humble-xacro \
+    ros-humble-joint-state-publisher \
+    ros-humble-joint-state-publisher-gui \
+    ros-humble-robot-state-publisher \
     git \
     curl \
     wget \
@@ -21,6 +24,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     less \
     x11-apps \
+    mesa-utils \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -44,7 +48,8 @@ RUN echo 'export PS1="\e[0;34m[\u@\h:\e[0;33m \W\e[0;34m]\$ \e[m "' >> /home/ros
     echo "alias ls='ls --color=auto'" >> /home/rosuser/.bashrc && \
     echo "alias ll='ls -l --color=auto'" >> /home/rosuser/.bashrc && \
     echo "alias la='ls -la --color=auto'" >> /home/rosuser/.bashrc && \
-    echo "alias ..='cd ..'" >> /home/rosuser/.bashrc
+    echo "alias ..='cd ..'" >> /home/rosuser/.bashrc &&\
+    echo "alias cb='colcon build && source install/setup.bash'" >> /home/rosuser/.bashrc
 
 USER rosuser
 WORKDIR /home/rosuser
