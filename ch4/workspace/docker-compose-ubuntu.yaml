@@ -13,11 +13,18 @@ services:
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ~/Project_robotics/ros2-minimal-examples/ch4/workspace:/home/rosuser/ros2_ws
+      - ~/.Xauthority:/home/rosuser/.Xauthority:rw
+      - ~/Projects_robotics/ros2-minimal-examples/ch4/workspace:/home/rosuser/ros2_ws
+
+    runtime: nvidia
 
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/home/rosuser/.Xauthority
+      - XDG_RUNTIME_DIR=/tmp/runtime-rosuser
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
 
     devices:
       - /dev/dri:/dev/dri

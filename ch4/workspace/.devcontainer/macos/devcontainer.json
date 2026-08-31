@@ -1,8 +1,8 @@
 {
-    "name": "ROS2 Humble Container",
+    "name": "ROS2 Humble Container (macOS)",
 
     "dockerComposeFile": [
-        "../docker-compose-macos.yaml"
+        "../../docker-compose-macos.yaml"
     ],
 
     "service": "ros2",
