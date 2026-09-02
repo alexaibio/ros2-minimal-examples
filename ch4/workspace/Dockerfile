@@ -38,6 +38,10 @@ RUN useradd -m -u $UID -g $GID -s /bin/bash rosuser && \
 # ---- fix ownership ----
 RUN chown -R $UID:$GID /home/rosuser
 
+# ---- git config ----
+RUN git config --global user.name "rosuser" && \
+    git config --global user.email "alex@bioinfo.com"
+
 # ---- ROS sourcing ----
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/rosuser/.bashrc && \
     echo '[ -f ~/ros2_ws/install/setup.bash ] && source ~/ros2_ws/install/setup.bash' >> /home/rosuser/.bashrc

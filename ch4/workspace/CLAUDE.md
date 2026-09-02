@@ -7,3 +7,4 @@ Here is accompayingg code for ROS 2 book explaining visualisation and modelling 
 - Don't add comments, docstrings, or type annotations to code you didn't change
 - Ask clarifying questions only when requirements are ambiguous and investigation can't resolve them
 - Don't make commits or git changes unless explicitly asked
+- do not do anycode editing till I exlisitelly aske for it
