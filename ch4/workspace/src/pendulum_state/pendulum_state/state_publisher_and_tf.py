@@ -10,10 +10,11 @@ class JointStatePublisher(Node):
     def __init__(self):
         super().__init__('joint_state_publisher')
         self.publisher_ = self.create_publisher(msg_type=JointState, topic='joint_states', qos_profile=10)
-        self.timer = self.create_timer(timer_period_sec=0.1, callback=self.publish_joint_state)
-        self.joint_state = JointState()     # When robot_state_publisher subscribes to /joint_states, it expects a JointState message
-
-        # Initialize joint names
+        self.timer = self.create_timer(timer_period_sec=0.5, callback=self.publish_joint_state)
+        
+        # Create and Initialize joint state
+        # When robot_state_publisher subscribes to /joint_states, it expects a JointState message
+        self.joint_state = JointState()     
         self.joint_state.name = ['revolute_joint']
         self.joint_state.position = [0.0]
         self.joint_state.velocity = [0.0]
@@ -24,17 +25,20 @@ class JointStatePublisher(Node):
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
     def publish_joint_state(self):
+        """
+        Publish joint_state at 2Hz
+        """
+
         # Update the joint state
         now = self.get_clock().now()
         self.joint_state.header.stamp = now.to_msg()
         
-        # Example of updating joint positions with a sine wave
+        # Update and publish joint positions with a sine wave
         self.joint_state.position[0] = math.sin(time.time())
-
         self.publisher_.publish(self.joint_state)
         #self.get_logger().info('Publishing: "%s"' % str(self.joint_state.position))
 
-        # Lookup the transform from 'base_link' to 'end_effector'
+        # Print the transform from 'base_link' to 'end_effector'
         try:
             trans = self.tf_buffer.lookup_transform('base_link', 'pole_link', rclpy.time.Time())
             self.get_logger().info('Transform: "%s"' % str(trans.transform))
