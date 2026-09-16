@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     ros-humble-joint-state-publisher \
     ros-humble-joint-state-publisher-gui \
     ros-humble-robot-state-publisher \
+    ros-humble-ros-gz \
     git \
     curl \
     wget \
