@@ -25,3 +25,20 @@
 - Publishes `/joint_states` for a single revolute joint driven by a sine wave.
 - It also reads back the resulting TF transform from `base_link` to `pole_link`, demonstrating how joint states propagate through `robot_state_publisher` into the TF tree.
 - Requires `pendulum_robot_description` to be running so that `robot_state_publisher` has a robot model to work with.
+
+# Gazebo
+
+
+# Isaac Sim
+  ## Requirements
+  - NVIDIA GPU + driver, with the NVIDIA Container Toolkit installed
+  - An NGC account and API key: `docker login nvcr.io` (one-time)
+
+  ## How to run
+  `docker compose -f docker-compose-isaac_ubuntu.yaml up`
+
+  This starts both the `ros2` container (same as `docker-compose-ubuntu.yaml`) and the `isaac-sim` container together, sharing the
+  host network.
+
+  Once Isaac Sim's GUI is open, enable **Window → Extensions → ROS2 Bridge** so it can publish/subscribe on the same ROS 2 topics
+  as your nodes running in the `ros2` container.
